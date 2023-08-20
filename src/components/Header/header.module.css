@@ -1,0 +1,23 @@
+.header {
+width: 100%;
+padding: 25px 15px;
+background-color: lightblue;
+margin-bottom: 20px;
+border-bottom: solid 1px lightgrey;
+box-shadow: 1px 1px 3px 4px rgb(128, 128, 128, 0.5) ;
+}
+
+.link {
+    margin-right: 10px;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+}
+
+.link:hover {
+    color: orangered;
+}
+
+.isActive {
+    color: green;
+}
