@@ -1,0 +1,26 @@
+li {
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.name {
+    font-size: 20px;
+    font-weight: 400;
+    margin: 0;
+    margin-left: 35px;
+    text-transform: capitalize;
+}
+
+.del {
+    width: 60px;
+    height: 20px;
+    margin-top: 5px;
+    margin-left: 20px;
+}
+
