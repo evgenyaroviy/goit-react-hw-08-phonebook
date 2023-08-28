@@ -58,7 +58,6 @@ export const userRefresh = async ({ rejectWithValue }) => {
   }
   setAuthHeader(persistedToken);
   const { data } = await instanceForContacts.get('users/current');
-  setTokenLocal(data.token);
   console.log(data);
   return data;
 }
