@@ -1,5 +1,5 @@
 import { Box, Button, Text } from '@chakra-ui/react';
-import { getAuth } from 'components/redux/selectors';
+import { profileSelect } from 'components/redux/selectors';
 import { logoutThunk } from 'components/redux/thunks';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -7,7 +7,8 @@ import { useNavigate } from 'react-router-dom';
 export const UserMenu = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const user = useSelector(getAuth);
+  const user = useSelector(profileSelect);
+  console.log(user);
 
   const handleLogout = () => {
     dispatch(logoutThunk());
