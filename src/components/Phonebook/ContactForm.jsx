@@ -3,7 +3,7 @@ import { getContacts } from "components/redux/selectors";
 import { addContactThunk } from "components/redux/thunks";
 import toast, { Toaster } from 'react-hot-toast';
 import { Formik, Field, Form } from 'formik';
-import { Box, Button, Container, FormLabel } from '@chakra-ui/react';
+import { Button, FormLabel } from '@chakra-ui/react';
 import { StyledForm } from './ContactForm.styled';
 
 export const ContactForm = () => {
