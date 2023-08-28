@@ -1,4 +1,4 @@
-import { ThreeCircles } from 'react-loader-spinner';
+import { ColorRing } from 'react-loader-spinner';
 import { StyledLoader } from './Loader.styled';
 import { useSelector } from 'react-redux';
 import { selectIsLoading } from 'components/redux/selectors';
@@ -13,13 +13,15 @@ export const Loader = () => {
           display: isLoading ? 'flex' : 'none',
         }}
       >
-        <ThreeCircles
-          height="100"
-          width="100"
-          color="#4fa94d"
-          visible={true}
-          ariaLabel="three-circles-rotating"
-        />
+        <ColorRing
+  visible={true}
+  height="150"
+  width="150"
+  ariaLabel="blocks-loading"
+  wrapperStyle={{}}
+  wrapperClass="blocks-wrapper"
+  colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+/>
       </StyledLoader>
     )
   );
