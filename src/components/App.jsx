@@ -54,7 +54,7 @@ useEffect(() => {
               path="/contacts"
               element={
                 <PublicGuard
-                  redirectTo="/logIn"
+                  redirectTo="/login"
                   component={<PhonebookPage />}
                 />
               }
