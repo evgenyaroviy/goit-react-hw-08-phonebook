@@ -2,6 +2,7 @@ import { NotificationMessage } from '../NotificationMessage/NotificationMessage'
 import { useDispatch, useSelector } from 'react-redux';
 import { getContacts } from '../redux/selectors';
 import { filterContacts } from '../redux/filtersSlice';
+import { FilterSection } from './Filter.styled';
 
 export const Filter = () => {
   const { items: contacts} = useSelector(getContacts)
@@ -12,15 +13,15 @@ export const Filter = () => {
   }
 
   return contacts.length !== 0 ? (
-    <div>
-      <label style={{marginLeft: '30px'}}>Find contacts by name:
+    <FilterSection>
+      <label>Find contacts by name:
       <input
         type="text"
         name="filter"
         onChange={handleFilterChange}
               />
         </label>
-    </div>
+    </FilterSection>
   ) : (
     <NotificationMessage />
   );

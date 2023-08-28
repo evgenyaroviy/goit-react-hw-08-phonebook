@@ -9,7 +9,7 @@ export const Header = () => {
     
     return (
         <Container maxW='100%'>
-        <Box as="header" bg="orange.100" boxShadow="2xl" p="5" rounded="sx" mb="30px">
+        <Box as="header" bg="yellow.200" boxShadow="2xl" p="5" rounded="sx" mb="30px">
                 <Box
                     as="nav"
                     display="flex"
