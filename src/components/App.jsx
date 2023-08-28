@@ -6,6 +6,9 @@ import { selectRefreshing } from './redux/selectors';
 import { userRefreshThunk } from './redux/thunks';
 import { PrivateGuard } from './guards/PrivateGuard';
 import { PublicGuard } from './guards/PublicGuard';
+import { ErrorNotification } from './Error/Error';
+import { Toaster } from 'react-hot-toast';
+import { Loader } from './Loader/Loader';
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
 const SignUp = lazy(() => import('./pages/SignUp/SignUp'));
@@ -25,7 +28,10 @@ useEffect(() => {
   }, [dispatch]);
 
   return (
-  <>
+    <>
+      <Loader />
+      <ErrorNotification />
+      <Toaster />
     {isRefreshing ? (
         <h2>Refreshing page</h2>
       ) : (

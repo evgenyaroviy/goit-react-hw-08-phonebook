@@ -37,18 +37,16 @@ export const userLogin = async (body) => {
 
 export const userLogout = async () => {
     const { data } = await instanceForContacts.post('users/logout');
-    console.log(data);
     clearAuthHeader();
-    console.log(clearAuthHeader());
     
     setTokenLocal(null);
-    console.log(setTokenLocal(null));
     return data;
     
 }
 
 export const userRefresh = async ({ rejectWithValue }) => {
   const persistedToken = localStorage.getItem('token');
+  console.log(persistedToken);
   if (persistedToken === null || persistedToken === 'null') {
     return rejectWithValue();
   }

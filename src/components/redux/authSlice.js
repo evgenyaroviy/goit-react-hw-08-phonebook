@@ -2,12 +2,12 @@ import { createSlice } from '@reduxjs/toolkit';
 import { loginThunk, logoutThunk, signUpThunk, userRefreshThunk } from './thunks';
 import { handleFulfieldLogin, handleFulfieldSignUp, handleFulfilledLogout, handleFulfilledRefresh, handlePendingRefresh, handleRejectedRefresh } from './hendlers';
 
-export const initialState = {
-    token: '',
-    isloading: false,
-    error: '',
-    profile: null,
-}
+const initialState = {
+  user: { name: null, email: null },
+  token: null,
+  isAuth: false,
+  isRefreshing: false,
+};
 
 const authSlice = createSlice({
   name: 'auth',

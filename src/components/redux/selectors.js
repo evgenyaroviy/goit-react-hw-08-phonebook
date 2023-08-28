@@ -4,8 +4,10 @@ export const getAuth = state => state.auth.token;
 export const profileSelect = state => state.auth.user;
 export const selectRefreshing = state => state.auth.isRefreshing;
 
-export const getContacts = state => state.contacts;
+export const selectError = state => state.ux.error;
+export const selectIsLoading = state => state.ux.isLoading;
 
+export const getContacts = state => state.contacts;
 export const getFilter = state => state.filter;
 
 

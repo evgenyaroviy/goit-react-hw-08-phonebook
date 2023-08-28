@@ -1,6 +1,5 @@
 export const handleFulfieldContacts = (state, { payload }) => {
   state.items = payload
-  
 }
 
 export const handleFulfilledAddContact = (state, { payload }) => {
