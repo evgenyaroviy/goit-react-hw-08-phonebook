@@ -1,4 +1,3 @@
-import css from "./phonebook.module.css"
 import { useDispatch, useSelector } from "react-redux";
 import { getContacts } from "components/redux/selectors";
 import { addContactThunk } from "components/redux/thunks";
@@ -11,10 +10,10 @@ import { addContactThunk } from "components/redux/thunks";
     e.preventDefault();
      const form = e.target;
      const name = form.elements.name.value;
-     const phone = form.elements.number.value
+     const number = form.elements.number.value
      const body = {
             name,
-            phone,
+            number,
      };
 
      const contactExists = items.some(contact => contact.name === name);
@@ -30,7 +29,7 @@ import { addContactThunk } from "components/redux/thunks";
  
   return (
     <div>
-      <form className={css.form} onSubmit={submitForm}>
+      <form onSubmit={submitForm}>
       <label> Name
       <input
         type="text"
@@ -49,7 +48,7 @@ import { addContactThunk } from "components/redux/thunks";
         required
       />
       </label>
-      <button className={css.button}>Add contact</button>
+      <button >Add contact</button>
       </form>
     </div>
   )

@@ -2,7 +2,6 @@ import { NotificationMessage } from '../NotificationMessage/NotificationMessage'
 import { useDispatch, useSelector } from 'react-redux';
 import { getContacts } from '../redux/selectors';
 import { filterContacts } from '../redux/filtersSlice';
-import "../Phonebook/phonebook.module.css"
 
 export const Filter = () => {
   const { items: contacts} = useSelector(getContacts)

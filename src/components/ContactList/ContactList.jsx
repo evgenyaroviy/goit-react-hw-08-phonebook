@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { getFilteredContacts } from '../redux/selectors';
-import css from './contacts.module.css'
+import {  getFilteredContacts } from '../redux/selectors';
 import { useEffect } from 'react';
 import { delContactThunk, getAllContactsThunk } from 'components/redux/thunks';
 
@@ -19,20 +18,18 @@ export const ContactList = () => {
 
   return (
     <div>
-      {filteredContacts?.map(({ id, name, phone }) => {
+      {filteredContacts?.map(({ id, name, number }) => {
         return (
           <li key={id}>
-            <div className={css.name}>
-              {name}: {phone}
+            <div>
+              {name}: {number}
             </div>
-            <button type="button" className={css.del} onClick={() => handleDeleteContact(id)}>
+            <button type="button" onClick={() => handleDeleteContact(id)}>
               Delete
             </button>
           </li>
         );
       })}
-      
-      
     </div>
   );
 };

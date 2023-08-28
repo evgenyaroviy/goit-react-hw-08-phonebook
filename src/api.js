@@ -1,23 +1,75 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://64d92f23e947d30a2609f9ab.mockapi.io';
+const instanceForContacts = axios.create({
+    baseURL: 'https://connections-api.herokuapp.com/'
+})
+
+
+export const setAuthHeader = token => {
+    instanceForContacts.defaults.headers.common[
+      'Authorization'
+    ] = `Bearer ${token}`;
+};
+
+export const setTokenLocal = token => {
+  localStorage.setItem('token', token);
+};
+
+export const clearAuthHeader = () => {
+delete instanceForContacts.defaults.headers.common['Authorization']
+};
 
 
 
-export const requestContacts = async () => {
-    const response = await axios.get(`${BASE_URL}/contacts`);
-    
-    return response.data;
+export const userSignUp = async (body) => {
+    const {data} = await instanceForContacts.post('/users/signup', body);
+    setAuthHeader(data.token);
+    setTokenLocal(data.token);
+    return data;
 }
 
-export const postContact = async (body) => {
-    const response = await axios.post(`${BASE_URL}/contacts`, body);
+export const userLogin = async (body) => {
+    const {data} = await instanceForContacts.post('users/login', body);
+    setAuthHeader(data.token);
+    setTokenLocal(data.token);
+    return data;
+}
 
-    return response.data;
+export const userLogout = async () => {
+    const { data } = await instanceForContacts.post('users/logout');
+    console.log(data);
+    clearAuthHeader();
+    console.log(clearAuthHeader());
+    
+    setTokenLocal(null);
+    console.log(setTokenLocal(null));
+    return data;
+    
+}
+
+export const userRefresh = async ({ rejectWithValue }) => {
+  const persistedToken = localStorage.getItem('token');
+  if (persistedToken === null || persistedToken === 'null') {
+    return rejectWithValue();
+  }
+  setAuthHeader(persistedToken);
+  const { data } = await instanceForContacts.get('users/current');
+  return data;
+}
+
+export const requestContacts = async () => {
+    const {data} = await instanceForContacts.get('/contacts');
+    
+    return data;
+}
+
+export const postContact = async (contact) => {
+    const {data} = await instanceForContacts.post('/contacts', contact);
+    return data;
 }
 
 export const delContact = async (id) => {
-    const response = await axios.delete(`${BASE_URL}/contacts/${id}`);
+    const {data} = await instanceForContacts.delete(`contacts/${id}`);
 
-    return response.data;
+    return data;
 }
