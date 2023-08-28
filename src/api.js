@@ -45,15 +45,23 @@ export const userLogout = async () => {
 }
 
 export const userRefresh = async ({ rejectWithValue }) => {
-  const persistedToken = localStorage.getItem('token');
-  console.log(persistedToken);
-  if (persistedToken === null || persistedToken === 'null') {
-    return rejectWithValue();
-  }
-  setAuthHeader(persistedToken);
+  const token = localStorage.getItem('token');
+  token && setAuthHeader(token);
   const { data } = await instanceForContacts.get('users/current');
   return data;
 }
+// export const userRefresh = async ({ rejectWithValue }) => {
+//   const persistedToken = localStorage.getItem('token');
+//   console.log(persistedToken);
+//   if (persistedToken === null || persistedToken === 'null') {
+//     return rejectWithValue();
+//   }
+//   setAuthHeader(persistedToken);
+//   const { data } = await instanceForContacts.get('users/current');
+//   setTokenLocal(data.token);
+//   console.log(data);
+//   return data;
+// }
 
 export const requestContacts = async () => {
     const {data} = await instanceForContacts.get('/contacts');

@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import { lazy, useEffect } from 'react';
 import { Layout } from "./Layout/Layout";
 import { useDispatch, useSelector } from 'react-redux';
-import { selectRefreshing } from './redux/selectors';
+import { getAuth, selectRefreshing } from './redux/selectors';
 import { userRefreshThunk } from './redux/thunks';
 import { PrivateGuard } from './guards/PrivateGuard';
 import { PublicGuard } from './guards/PublicGuard';
@@ -22,10 +22,11 @@ const PhonebookPage = lazy(() => import('./pages/PhonebookPage/PhonebookPage'));
 export const App = () => {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectRefreshing);
-
-useEffect(() => {
-    dispatch(userRefreshThunk());
-  }, [dispatch]);
+  const isAuth = useSelector(getAuth)
+  
+  useEffect(() => {
+    !isAuth && dispatch(userRefreshThunk());
+  }, [dispatch, isAuth]);
 
   return (
     <>

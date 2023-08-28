@@ -5,7 +5,6 @@ import { selectError } from 'components/redux/selectors';
 
 export const ErrorNotification = () => {
     const errorMessage = useSelector(selectError);
-    console.log(errorMessage);
 
   useEffect(() => {
     if (errorMessage) {

@@ -8,7 +8,6 @@ export const UserMenu = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector(profileSelect);
-  console.log(user);
 
   const handleLogout = () => {
     dispatch(logoutThunk());

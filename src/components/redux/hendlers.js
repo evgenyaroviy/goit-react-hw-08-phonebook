@@ -25,6 +25,7 @@ export const handlePendingRefresh = (state, actions) => {
 
 export const handleFulfilledRefresh = (state, { payload }) => {
   state.user = payload;
+  state.token = payload.token;
   state.isAuth = true;
   state.isRefreshing = false;
 };
