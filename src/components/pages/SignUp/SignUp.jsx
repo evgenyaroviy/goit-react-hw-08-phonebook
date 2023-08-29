@@ -84,7 +84,7 @@ const SignUp = () => {
             )}
           </Field>
 
-          <Button type="submit" size="md" mt={5} colorScheme="yellow.200">
+          <Button type="submit" size="md" mt={5} colorScheme="yellow">
             Sign up
           </Button>
         </Form>
