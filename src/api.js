@@ -29,7 +29,9 @@ export const userSignUp = async (body) => {
 }
 
 export const userLogin = async (body) => {
-    const {data} = await instanceForContacts.post('users/login', body);
+  console.log(body)
+  const { data } = await instanceForContacts.post('users/login', body);
+  console.log(data)
     setAuthHeader(data.token);
     setTokenLocal(data.token);
     return data;
@@ -44,21 +46,13 @@ export const userLogout = async () => {
     
 }
 
-// export const userRefresh = async ({ rejectWithValue }) => {
-//   const token = localStorage.getItem('token');
-//   token && setAuthHeader(token);
-//   const { data } = await instanceForContacts.get('users/current');
-//   return data;
-// }
 export const userRefresh = async ({ rejectWithValue }) => {
   const persistedToken = localStorage.getItem('token');
-  console.log(persistedToken);
   if (persistedToken === null || persistedToken === 'null') {
     return rejectWithValue();
   }
   setAuthHeader(persistedToken);
   const { data } = await instanceForContacts.get('users/current');
-  console.log(data);
   return data;
 }
 

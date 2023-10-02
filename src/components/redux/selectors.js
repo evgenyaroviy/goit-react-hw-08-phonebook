@@ -1,6 +1,6 @@
 import { createSelector } from "@reduxjs/toolkit";
 
-export const getAuth = state => state.auth.token;
+export const getAuth = state => state.auth.isAuth;
 export const profileSelect = state => state.auth.user;
 export const selectRefreshing = state => state.auth.isRefreshing;
 
