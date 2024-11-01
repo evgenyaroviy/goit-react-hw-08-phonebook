@@ -24,7 +24,7 @@ delete instanceForContacts.defaults.headers.common['Authorization']
 export const userSignUp = async (body) => {
   console.log(body)
     const {data} = await instanceForContacts.post('/users/signup', body);
-    console.log(data.token)
+    console.log(data)
     setAuthHeader(data.token);
     setTokenLocal(data.token);
     return data;
