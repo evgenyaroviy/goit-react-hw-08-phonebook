@@ -1,8 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { delContact, postContact, requestContacts, userLogin, userLogout, userRefresh, userSignUp } from "api";
 
-export const signUpThunk = createAsyncThunk('users/signUp',
+export const signUpThunk = createAsyncThunk('users/signup',
   async (body, {rejectWithValue}) => {
+    console.log(body)
     try {
       return await userSignUp(body)
     } catch (e) {

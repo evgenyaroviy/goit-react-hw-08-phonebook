@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instanceForContacts = axios.create({
-    baseURL: 'https://connections-api.herokuapp.com/'
+    baseURL: 'https://connections-api.goit.global/'
 })
 
 
@@ -22,7 +22,9 @@ delete instanceForContacts.defaults.headers.common['Authorization']
 
 
 export const userSignUp = async (body) => {
+  console.log(body)
     const {data} = await instanceForContacts.post('/users/signup', body);
+    console.log(data.token)
     setAuthHeader(data.token);
     setTokenLocal(data.token);
     return data;
